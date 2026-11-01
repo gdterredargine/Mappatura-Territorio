@@ -1,0 +1,354 @@
+<!DOCTYPE html> <!-- javascript:alert(document.lastModified) -->
+<html>
+    <head>
+        <title>Mappatura Territorio Terre d'Argine</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="icon" href="imgs/gd_logo.ico" type="image/x-icon">
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    </head>
+    
+    <body>
+        <h1>Terre d'Argine</h1>
+
+        <section>
+            <div id="filters">
+                <button class="filter">Mostra Tutto</button>
+                <select class="filter">
+                    <option value="Circoli Sociali" selected>Circoli Sociali</option>
+                    <option value="ARCI">ARCI</option>
+                    <option value="ANCESCAO">ANCESCAO</option>
+                </select>
+                <button class="filter">Cinema</button>
+                <button class="filter">Teatro</button>
+                <button class="filter">Mezzi Pubblici [WIP]</button>
+                <button class="filter">Servizi [WIP]</button>
+                <button class="filter">Parchi [WIP]</button> 
+                <button class="filter">Biblioteche [WIP]</button>               
+            </div>
+
+            <div id="map"></div>
+        </section>
+
+        
+        <script referrerpolicy="strict-origin-when-cross-origin">
+            var map = L.map('map').setView([44.783, 10.883], 15);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+
+            var customOptions = {'className' : 'custom'}
+
+
+            // Sedi ARCI
+
+            let ARCIIcon = {
+                iconUrl: "imgs/arci.png",
+                iconSize: [30, 30]
+            }
+            
+            let ARCIOptions = {
+                title:"ARCI",
+                icon: L.icon(ARCIIcon)
+            }
+
+            var groupARCI = L.layerGroup();
+            
+            L.marker([44.77327453996158, 10.890110996111677], ARCIOptions).bindPopup(
+                "<b>Centro Polivalente Giliberti / Poison Club</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                 customOptions).addTo(groupARCI);
+            L.marker([44.783380618372014, 10.887134298604687], ARCIOptions).bindPopup(
+                "<b>Circolo Mattatoyo</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+            L.marker([44.777770354652056, 10.901456137876743], ARCIOptions).bindPopup(
+                "<b>Centro Sociale Due Ponti</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+            L.marker([44.78641100577738, 10.877567067276088], ARCIOptions).bindPopup(
+                "<b>Circolo Aziendale Sanita'</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+            L.marker([44.794033066687895, 10.876440355640707], ARCIOptions).bindPopup(
+                "<b>Centro Sociale Guerzoni</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+            L.marker([44.79489672384018, 10.881920052799629], ARCIOptions).bindPopup(
+                "<b>Circolo Sandro Cabassi</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+            L.marker([44.763735462843606, 10.847603676302139], ARCIOptions).bindPopup(
+                "<b>Circolo Arcobaleno</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+            L.marker([44.80768305586546, 10.910002436586078], ARCIOptions).bindPopup(
+                "<b>Polisportiva San Marino</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+            L.marker([44.808151108506, 10.912396338058006], ARCIOptions).bindPopup(
+                "<b>Circolo Bruno Mora</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+            L.marker([44.82040404052017, 10.886256600023174], ARCIOptions).bindPopup(
+                "<b>Circolo Ciro Menotti</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+            L.marker([44.81568694967928, 10.8567355091258], ARCIOptions).bindPopup(
+                "<b>Circolo Rinascita</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+            L.marker([44.73263210229508, 10.920982669127579], ARCIOptions).bindPopup(
+                "<b>Circolo Sarno Righi</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+            L.marker([44.732723297283464, 10.924793109599834], ARCIOptions).bindPopup(
+                "<b>Centro Sportivo Polivalente</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+            L.marker([44.729374348429396, 10.921034445511497], ARCIOptions).bindPopup(
+                "<b>Circolo Habitat / Dude</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+            L.marker([44.794697747539466, 10.968355924949384], ARCIOptions).bindPopup(
+                "<b>Circolo Ugo Barbaro</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+            L.marker([44.747760466428865, 10.97909576727359], ARCIOptions).bindPopup(
+                "<b>Ritrovo Sportivo Sozzigalli</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+            L.marker([44.841389019375086, 10.948758782625196], ARCIOptions).bindPopup(
+                "<b>Polisportiva Roveretana</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+            L.marker([44.70050185360779, 10.865607203092786], ARCIOptions).bindPopup(
+                "<b>Contrada dei Pio</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+            L.marker([44.89324698524963, 10.900128696119227], ARCIOptions).bindPopup(
+                "<b>Taverna</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/p/4/circoli.html'>Scopri di piu'!</a>",
+                customOptions).addTo(groupARCI);
+
+
+            // Centri ANCESCAO:
+
+            let ANCESCAOIcon = {
+                iconUrl: "imgs/ancescao.png",
+                iconSize: [30, 30]
+            }
+            
+            let ANCESCAOOptions = {
+                title:"ANCESCAO",
+                icon: L.icon(ANCESCAOIcon)
+            }
+
+            var groupANCESCAO = L.layerGroup();
+            
+            L.marker([44.78847168058613, 10.885572390055147], ANCESCAOOptions).bindPopup(
+                "<b>Centro Bruno Losi</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://ancescao.modena.it/chi-siamo/centri'>Scopri di piu'!</a>", customOptions).addTo(groupANCESCAO);
+            L.marker([44.76848157447455, 10.890472637821087], ANCESCAOOptions).bindPopup(
+                "<b>Centro Graziosi</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://ancescao.modena.it/chi-siamo/centri'>Scopri di piu'!</a>", customOptions).addTo(groupANCESCAO);
+            L.marker([44.79355080780919, 10.892621683966363], ANCESCAOOptions).bindPopup(
+                "<b>Circolo Cibeno Pile</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://ancescao.modena.it/chi-siamo/centri'>Scopri di piu'!</a>", customOptions).addTo(groupANCESCAO);
+            L.marker([44.79410920318989, 10.876515457495607], ANCESCAOOptions).bindPopup(
+                "<b>Circolo Guerzoni</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://ancescao.modena.it/chi-siamo/centri'>Scopri di piu'!</a>", customOptions).addTo(groupANCESCAO);
+            L.marker([44.76771205102637, 10.867486065419934], ANCESCAOOptions).bindPopup(
+                "<b>Centro Gorizia</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://ancescao.modena.it/chi-siamo/centri'>Scopri di piu'!</a>", customOptions).addTo(groupANCESCAO);
+            L.marker([44.781183755147296, 10.87341429796707], ANCESCAOOptions).bindPopup(
+                "<b>Centro Orti</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://ancescao.modena.it/chi-siamo/centri'>Scopri di piu'!</a>", customOptions).addTo(groupANCESCAO);
+            L.marker([44.690721752995785, 10.842646236578652], ANCESCAOOptions).bindPopup(
+                "<b>Centro La Quercia</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://ancescao.modena.it/chi-siamo/centri'>Scopri di piu'!</a>", customOptions).addTo(groupANCESCAO);
+
+
+            // Cinema:
+
+            let CinemaIcon = {
+                iconUrl: "imgs/cinema.png",
+                iconSize: [30, 30]
+            }
+            
+            let CinemaOptions = {
+                title:"Cinema",
+                icon: L.icon(CinemaIcon)
+            }
+
+            var groupCinema = L.layerGroup();
+
+            L.marker([44.78636253999379, 10.88293328331409], CinemaOptions).bindPopup(
+                "<b>Cinema Corso</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.cinemacorsocarpi.it'>Visita il sito!</a>", customOptions).addTo(groupCinema);
+            L.marker([44.786161429622965, 10.863802991868077], CinemaOptions).bindPopup(
+                "<b>Space City</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.spacecity.it'>Visita il sito!</a>", customOptions).addTo(groupCinema);
+            L.marker([44.787745264177104, 10.884402357788051], CinemaOptions).bindPopup(
+                "<b>Cinema Eden</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.cinemaedencarpi.it'>Visita il sito!</a>", customOptions).addTo(groupCinema);
+            L.marker([44.80909862164102, 10.913088507209773], CinemaOptions).bindPopup(
+                "<b>Cinema Ariston</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.aristoncinemacarpi.it'>Visita il sito!</a>", customOptions).addTo(groupCinema);
+            L.marker([44.78440767745846, 10.873193193273792], CinemaOptions).bindPopup(
+                "<b>Cinema Estivo Eden</b>", customOptions).addTo(groupCinema);
+            L.marker([44.78684440203163, 10.888471056331108], CinemaOptions).bindPopup(
+                "<b>Cinema Estivo \"Tenera e\' la Notte\"</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/notizie/1125/tenera-e-la-notte-cinema-a-carpi.html'>Novita'</a>", customOptions).addTo(groupCinema);
+            L.marker([44.73833183911224, 10.923864540291525], CinemaOptions).bindPopup(
+                "<b>Cinema Italia</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.arcimodena.org/notizie/1253/nuovo-cinema-italia-di-soliera.html'>Novita'</a>", customOptions).addTo(groupCinema);
+           
+            // Teatri:
+
+            let TeatroIcon = {
+                iconUrl: "imgs/drama-masks.png",
+                iconSize: [30, 30]
+            }
+            
+            let TeatroOptions = {
+                title:"Teatro",
+                icon: L.icon(TeatroIcon)
+            }
+
+            var groupTeatro = L.layerGroup();
+
+            L.marker([44.782615768259596, 10.885174709603024], TeatroOptions).bindPopup(
+                "<b>Teatro Comunale</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://teatrocarpi.it'>Visita il sito!</a>", customOptions).addTo(groupTeatro);
+
+
+            // Biblioteche:
+
+            let BibliotecaIcon = {
+                iconUrl: "imgs/bookshelf.png",
+                iconSize: [30, 30]
+            }
+            
+            let BibliotecaOptions = {
+                title:"Biblioteca",
+                icon: L.icon(BibliotecaIcon)
+            }
+
+            var groupBiblioteca = L.layerGroup();
+
+            L.marker([44.783466727953865, 10.886639169308673], BibliotecaOptions).bindPopup('Biblioteca Loria', customOptions).addTo(groupBiblioteca);
+            L.marker([44.89264877728642, 10.90322173829853], BibliotecaOptions).bindPopup('Biblioteca - PAC', customOptions).addTo(groupBiblioteca);
+            L.marker([44.73840521695517, 10.924730404035525], BibliotecaOptions).bindPopup('Biblioteca Campori', customOptions).addTo(groupBiblioteca);
+            L.marker([44.73972111081659, 10.925161395293134], BibliotecaOptions).bindPopup('Biblioteca Campori Junior', customOptions).addTo(groupBiblioteca);
+            L.marker([44.688197954958426, 10.840403953779134], BibliotecaOptions).bindPopup('Biblioteca Campori Junior', customOptions).addTo(groupBiblioteca);
+
+
+             // Trasporto pubblico:
+
+            let PubTranspIcon = {
+            iconUrl: "imgs/marker-train-bus.png",
+            iconSize: [30, 30]
+            }
+            
+            let PubTranspOptions = {
+                title:"Trasporto Pubblico",
+                icon: L.icon(PubTranspIcon)
+            }
+
+            var groupPubTransp = L.layerGroup();
+
+            L.marker([44.782908879412496, 10.891780969308371], PubTranspOptions).bindPopup(
+                "<b> Stazione FS</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.rfi.it/it/stazioni/carpi.html'>Pagina</a>", customOptions).addTo(groupPubTransp);
+            
+
+            // Servizi:
+
+            let BuildingIcon = {
+                iconUrl: "imgs/marker-building.png",
+                iconSize: [30, 30]
+            }
+            
+            let BuildingOptions = {
+                title:"Building",
+                icon: L.icon(BuildingIcon)
+            }
+            
+            var groupBuilding = L.layerGroup();
+
+            L.marker([44.782685340911414, 10.875888866038123], BuildingOptions).bindPopup(
+                "<b>Consultorio</b> <br> <span style='font-size:20px;'>&#8641;</span> <a href='https://www.ausl.mo.it/luogo/consultorio-familiare-spazio-giovani-e-giovani-adulti-carpi/'>Visita</a>", customOptions).addTo(groupBuilding);
+
+            
+            // Gestione azioni cliccando i bottoni di filtro:
+
+            var filters = {
+            "ARCI": groupARCI,
+            "ANCESCAO": groupANCESCAO,
+            "Cinema": groupCinema,
+            "Teatro": groupTeatro,
+            "Biblioteche": groupBiblioteca,
+            "Mezzi Pubblici": groupPubTransp,
+            "Servizi": groupBuilding
+            };
+
+            // Aggiunge tutti i gruppi alla mappa all'accensione
+            Object.values(filters).forEach(layer => layer.addTo(map));
+
+            // Seleziona tutti i bottoni con classe filter
+            document.querySelectorAll('button.filter').forEach(button => {
+                button.addEventListener('click', function(e) {                    
+                    var categoria = this.textContent;
+
+                    if (categoria === "Mostra Tutto") {
+                        // Tutti i gruppi aggiunti alla mappa
+                        Object.values(filters).forEach(layer => map.addLayer(layer));
+                    } else {
+                        // Tutto rimosso prima di mostrare solo la categoria scelta
+                        Object.values(filters).forEach(layer => map.removeLayer(layer));
+                        
+                        // Se esiste il gruppo corrispondente, mostralo
+                        if (filters[categoria]) {
+                            map.addLayer(filters[categoria]);
+                        }
+                    }
+                });
+            });
+
+            document.querySelector('select.filter').addEventListener('change', function() {
+                var categoria = this.value;
+                
+                Object.values(filters).forEach(layer => map.removeLayer(layer));
+                if (filters[categoria]) {
+                    map.addLayer(filters[categoria]);
+                }
+            });
+        </script>
+
+        
+        <section id="gallery">
+            <img class="gallery" src="imgs/piazza_carpi.png" alt="Piazza Carpi">
+            <img class="gallery" src="imgs/piazza_soliera.png" alt="Piazza Soliera">
+            <img class="gallery" src="imgs/piazza_novi.png" alt="Piazza Novi">
+            <img class="gallery" src="imgs/piazza_campogalliano.png" alt="Piazza Campogalliano">
+        </section>
+
+        <hr>
+
+        <div class="Instagram-feed-widget" style="max-width: 100%; text-align: center;">
+            <iframe 
+                src="https://www.Instagram.com/gd_terredargine/embed" 
+
+                onload="this.width=screen.width * 0.85; this.height=screen.width * 0.45"
+                frameborder="0" 
+                scrolling="yes" 
+                allowtransparency="true" 
+
+                style="border: 1px;
+                        overflow: hidden;
+                        margin: 2vw;
+                        border-radius:1vw;
+                        transform: scale(0.90, 0.90); ">
+            </iframe>
+        </div>
+
+        <hr>
+
+        <div class="scrolls">
+            <a href="https://support.ecosia.org" target="_blank">
+                <div class="container">
+                    <img class="redirect" src="imgs/ecosia.png" alt="Ecosia">
+                    <div class="overlay"></div>
+                </div>
+            </a>   
+            <a href="https://www.toogoodtogo.com/it/how-does-the-app-work" target="_blank">
+                <div class="container">
+                    <img class="redirect" src="imgs/toogoodtogo.png" alt="Too Good To Go">
+                    <div class="overlay"></div>
+                </div>
+            </a>
+            <a href="https://company.vinted.com/sustainability?lang=it" target="_blank">
+                <div class="container">
+                    <img class="redirect" src="imgs/vinted.png" alt="Vinted">
+                    <div class="overlay"></div>
+                </div>
+            </a>   
+        </div>
+
+        <!-- Fine pagina -->
+
+        <footer>
+            <a href="https://www.instagram.com/gd_terredargine/"><img class="png" src="imgs/instagram.png" alt="Instagram"></a>
+            <a href="https://www.facebook.com/Gdcarpi/?locale=it_IT"><img class="png" src="imgs/facebook.png" alt="Facebook"></a>
+        </footer>
+    </body>
+</html>
